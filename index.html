@@ -1,0 +1,169 @@
+<html>
+<head>
+    <title>VRAdapter</title>
+    <script type="application/x-javascript">
+        
+    </script>
+</head>
+<body >
+
+    <style>
+        body {
+            background: -webkit-canvas(squares);
+           
+        }
+        #background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            z-index: -1;
+        }
+        #main {
+            padding-bottom: 10px;
+            padding-left: 31%;
+            padding-right: 100px;
+            padding-top: 50px;
+            font-size: 128px;
+            margin: 12px;
+            color: white;
+            font-family: 'Comic Sans MS'
+        }
+
+        #war {
+            padding-bottom: 10px;
+            padding-left: 25%;
+            padding-right: 100px;
+            padding-top: 50px;
+            font-size: 72px;
+            margin: 12px;
+            color: red;
+            font-family: 'Comic Sans MS'
+        }
+
+        #text {
+            padding-left: 12%;
+            font-size: 25px;
+            margin: 12px;
+            font-family: 'Comic Sans MS'
+        }
+
+        .gfg {
+            position: relative;
+            width: 100%;
+            text-align: center;
+        }
+
+        .text-container {
+            position: absolute;
+            color: rgb(255, 255, 255);
+            left: 47%;
+            top: 50%;
+            text-align: center;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+        }
+    </style>
+    <canvas id="background"></canvas>
+    <img style="padding-left: 32%;" src="Eye.png" id="eye" />
+
+
+    <p id="main">VRAdapter</p>
+    <div class="gfg">
+
+        <img src="back.png"
+             style="width: 50%; height: 80vh;">
+        <div class="text-container">
+            <p id="text">
+                VrAdapter this free tool for create
+            </p>
+            <p id="text">
+                vr games.This is simple utilit for create vr mod on
+            </p>
+            <p id="text">
+                unity projects.You can load any 3d project and create
+            </p>
+            <p id="text">
+                vr game template. You can download any VRA version or create your version
+            </p>
+            <img style="padding-left: 12%;" src="img.png" />
+        </div>
+    </div>
+    <p id="main">VR MODS</p>
+    <div class="gfg">
+
+        <img src="back.png"
+             style="width: 50%; height: 80vh;">
+        <div class="text-container">
+            <img style="padding-left: 12%;" src="TIO.jpg" />
+            <p id="text">
+                Tienk.io VR Mod (Old VRA version)
+            </p>
+
+        </div>
+    </div>
+    <a href="https://t.me/downloadVRA" id="main">Download VRA</a>
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" id="war">This only for pico headset</a>
+  
+    <script>
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+        var pointX = []
+        var pointY = []
+        for (let i = 0; i < 1000; i++) {
+            pointX.push(getRandomInt(1000))
+            pointY.push(getRandomInt(1000))
+        }
+        setTimeout("Close()", 3000);
+        function Open() {
+            document.getElementById("eye").src = "Eye.png";
+            setTimeout("Close()", 3000);
+        }
+        function Close() {
+            document.getElementById("eye").src = "EyeClose.png";
+            setTimeout("Open()", 100);
+        }
+        var canvas = document.getElementById("background");
+        if (canvas.getContext) {
+            var ctx = canvas.getContext("2d");
+            fly()
+            
+            //ctx.fillRect(0, 0, 1000, 1000);
+            //ctx.fillStyle = "white"
+            //for (let i = 0; i < 1000; i++) {
+            //    ctx.fillRect(pointX[i], pointY[i], 1, 1);
+            //    pointY[i]+=1
+            //}
+            
+        }
+        function getCursorPosition(canvas, event) {
+            const rect = canvas.getBoundingClientRect()
+            const x = event.clientX - rect.left
+            const y = event.clientY - rect.top
+            console.log("x: " + x + " y: " + y)
+            
+        }
+        function fly() {
+            ctx.fillStyle = "black"
+            /*ctx.clearRect(0, 0, canvas.width, canvas.height);*/
+            ctx.fillRect(0, 0, 1000, 1000);
+            ctx.fillStyle = "white"
+            for (let i = 0; i < 1000; i++) {
+                ctx.fillRect(pointX[i], pointY[i], 1, 1);
+                pointY[i] -= 1
+                if (pointY[i] <= 0) {
+                    pointY[i] = 1000
+                }
+            }
+            window.requestAnimationFrame(fly);
+        }
+        
+        canvas.addEventListener('mousedown', function (e) {
+            getCursorPosition(canvas, e)
+        })
+    </script>
+    </bodyonload="draw(300,>
+</html>
